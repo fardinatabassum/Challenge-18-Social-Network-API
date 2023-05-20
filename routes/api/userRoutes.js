@@ -13,7 +13,7 @@ const {
 // /api/users GET all and POST 
 router.route('/').get(getUser).post(createUser);
 
-// /api/users/:userId GET one user, PUT and DELETE by user's ID
+// /api/users/:userId GET a single user, PUT and DELETE by user's ID
 router.route('/:userId')
 .get(getSingleUser)
 .put(updateUser)

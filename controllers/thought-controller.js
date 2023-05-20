@@ -1,31 +1,4 @@
-// const { Thought, User } = require('../models');
-
-// module.exports = {
-//     async getThought(req, res) {
-//       try {
-//         const thoughts = await Post.find()
-//           .populate({ path: 'tags', select: '-__v' });
-  
-//         res.json(thoughts);
-//       } catch (err) {
-//         console.error({ message: err });
-//         res.status(500).json(err);
-//       }
-//     },
-
-//     // create a new thought
-//     async createThought(req, res) {
-//       try {
-//         const post = await Post.create(req.body);
-//         res.json(post);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-//     },
-//   };
-  
-
-//   new code
+// imports models
 const { User, Thought } = require("../models");
 
 module.exports = {
@@ -35,7 +8,7 @@ module.exports = {
       .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
-  // get single thought
+  // get single thought using thought id
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
@@ -46,7 +19,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //create a thought and push the created thought's _id to the associated user's thoughts array field
+  //create a thought and push the created thought's _id to the associated user's thoughts array 
   createThought(req, res) {
     Thought.create(req.body)
       .then(({ _id }) => {
@@ -63,7 +36,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //update a thought
+  //updates a thought using its thought id
   updateThought(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -77,7 +50,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //delete a thought
+  //delete a thought using thought ID
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
@@ -96,7 +69,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //create reaction
+  //creates reaction using thoguht id to find the thought first
   createReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -110,7 +83,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //delete reaction
+  //delete reaction using thought id and reaction id
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

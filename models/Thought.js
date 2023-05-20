@@ -1,18 +1,8 @@
-// const reactionSchema = require('./Reaction')
-
-// const thoughtSchema = new schema({
-
-//     reactions: [reactionSchema]
-// })
-
-// module.exports = Thought;
-
-
 const { Schema, model, Types } = require('mongoose');
 // import moment module to format the timestamp 
 const dateFormat = require("../utils/dateFormat");
 
-//reaction schema
+//reactions schema
 const reactionSchema = new Schema (
     {
        reactionId: {
@@ -43,7 +33,7 @@ const reactionSchema = new Schema (
     }
 )
 
-// thought schema
+// thoughts schema
 const thoughtSchema = new Schema (
     {
       thoughtText: {
