@@ -1,52 +1,3 @@
-// const { User } = require("../models/User");
-
-// const userControllers = {
-//   addFriend() {
-//     User.findByIdAndUpdate(
-
-//     )
-//   },
-//   deleteFriend() {},
-// };
-
-// module.exports = userControllers;
-
-// module.exports = {
-//     async getUsers(req, res) {
-//       try {
-//         const users = await User.find();
-//         res.json(users);
-//       } catch (err) {
-//         res.status(500).json(err)
-//       }
-//     },
-//     async getSingleUser(req, res) {
-//       try {
-//         const user = await User.findOne({ _id: req.params.userId });
-  
-//         if (!user) {
-//           return res.status(404).json({ message: 'No user with that ID' });
-//         }
-  
-//         res.json(user);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-//     },
-//     // create a new user
-//     async createUser(req, res) {
-//       try {
-//         const dbUserData = await User.create(req.body);
-//         res.json(dbUserData);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-//     },
-//   };
-  
-
-//   new code
-
 const { User, Thought } = require("../models");
 
 module.exports = {
@@ -59,9 +10,9 @@ module.exports = {
   //Get single user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
-      .populate("thoughts")
-      .populate("friends")
-      .select("-__v")
+      // .populate("thoughts")
+      // .populate("friends")
+      // .select("-__v")
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No User find with that ID!" })
