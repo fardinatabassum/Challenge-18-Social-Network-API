@@ -1,3 +1,4 @@
+// formats date and time stamp
 const addDateSuffix = date => {
     let dateStr = date.toString();
   
